@@ -21,12 +21,13 @@
 *************************** */
 
 window.addEventListener('DOMContentLoaded', () => {
+
   const start = document.querySelector('#start');
   start.addEventListener('click', function (e) {
     document.querySelector('#quizBlock').style.display = 'block';
     start.style.display = 'none';
   });
-
+  let timer = null;
   const quizArray = [
     {
       q: 'Which is the third planet from the sun?',
@@ -83,6 +84,7 @@ window.addEventListener('DOMContentLoaded', () => {
     quizWrap.innerHTML = quizDisplay;
   };
 // Calculate the score (Task 1)
+
   const calculateScore = () => {
     let score = 0;
     quizArray.forEach((quizItem, index) => {
@@ -104,8 +106,9 @@ window.addEventListener('DOMContentLoaded', () => {
     return score;
   };
 // Add event listener to the submit button (Task 2)
-  const submitButton = document.querySelector('#btnSubmit');
+ const submitButton = document.querySelector('#btnSubmit');
   submitButton.addEventListener('click', () => {
+   clearInterval(timer);
     const score = calculateScore();
     document.querySelector('#score').textContent = `Score: ${score}`;
     highlightCorrectAnswers();
@@ -116,11 +119,12 @@ window.addEventListener('DOMContentLoaded', () => {
     window.location.reload();  // Reload the page
   });
   // Countdown timer (Task 5)
+ 
   const countdownTimer = () => {
     let seconds = 60;
     const timeDisplay = document.querySelector('#time');
 
-    const timer = setInterval(() => {
+    timer = setInterval(() => {
       seconds--;
       timeDisplay.textContent = formatTime(seconds);
 
