@@ -72,6 +72,7 @@ window.addEventListener('DOMContentLoaded', () => {
     quizArray.forEach((quizItem, index) => {
       quizDisplay += `
         <ul class="list-group">
+        Q - ${quizItem.q}
           <li class="list-group-item mt-2" id="li_${index}_0"><input type="radio" name="radio${index}" id="radio_${index}_0"> ${quizItem.o[0]}</li>
           <li class="list-group-item" id="li_${index}_1"><input type="radio" name="radio${index}" id="radio_${index}_1"> ${quizItem.o[1]}</li>
           <li class="list-group-item"  id="li_${index}_2"><input type="radio" name="radio${index}" id="radio_${index}_2"> ${quizItem.o[2]}</li>
